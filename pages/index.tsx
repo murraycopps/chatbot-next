@@ -39,7 +39,7 @@ export default function IndexPage({ apiKey }: { apiKey: string }) {
       ({ request, response }, index) =>
         `{person: "${request}", chatbot: "${response.replace(/\n/g, " ")}"}`
     );
-    const prompt = `Previous conversation: "${previousMessages}" Current message: "${request}" Respond to the current message as the chatbot attempting to simulate a conversation between two secret gay lovers who are runners.`;
+    const prompt = `Previous conversation: "${previousMessages}" Current message: "${request}" Respond to the current message as the chatbot attempting to simulate a conversation between two secret gay lovers who are runners. Please use innuendos.`;
 
     console.log(previousMessages);
     console.log(prompt);
