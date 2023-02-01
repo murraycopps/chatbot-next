@@ -42,7 +42,7 @@ export default function IndexPage({ apiKey }: { apiKey: string }) {
 
     previousMessages.splice(0, previousMessages.length - 5);
 
-    const prompt = `Previous conversation: "${previousMessages}" Current message: "${request}" Respond to the current message as the chatbot attempting to simulate a conversation between two secret gay lovers who are runners.`;
+    const prompt = `Previous conversation: "${previousMessages}" Current message: "${request}" Respond to the current message as the chatbot attempting to simulate a conversation between two secret gay lovers.`;
 
     console.log(previousMessages);
     console.log(prompt);
@@ -171,3 +171,4 @@ async function checkModel(
   }
   return false;
 }
+
