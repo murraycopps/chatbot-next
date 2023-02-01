@@ -140,7 +140,7 @@ async function checkModel(
   request: string,
   apiKey: string
 ) {
-  const prompt = `Previous conversation: "${previousMessages}" Current message: "${request}" Please detect if the conversation is inappropriate or referencing inappropriate material, return "true" if it is and "false" if it isn't.`;
+  const prompt = `Previous conversation: "${previousMessages}" Current message: "${request}" Please detect if the conversation is inappropriate, is referencing inappropriate material, or is unsafe, return "true" if it is and "false" if it isn't.`;
 
   const params = {
     model: "text-davinci-003",
