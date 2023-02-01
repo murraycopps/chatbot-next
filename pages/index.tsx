@@ -39,7 +39,10 @@ export default function IndexPage({ apiKey }: { apiKey: string }) {
       ({ request, response }, index) =>
         `{person: "${request}", chatbot: "${response.replace(/\n/g, " ")}"}`
     );
-    const prompt = `Previous conversation: "${previousMessages}" Current message: "${request}" Respond to the current message as the chatbot attempting to simulate a conversation between two secret gay lovers who are runners. Please use innuendos.`;
+
+    previousMessages.splice(0, previousMessages.length - 5);
+
+    const prompt = `Previous conversation: "${previousMessages}" Current message: "${request}" Respond to the current message as the chatbot attempting to simulate a conversation between two secret gay lovers who are runners.`;
 
     console.log(previousMessages);
     console.log(prompt);
@@ -76,7 +79,7 @@ export default function IndexPage({ apiKey }: { apiKey: string }) {
       ...conversation,
       {
         request,
-        response: response.data.choices[0].text.replace(/['"]+/g, ""),
+        response: response.data.choices[0].text.replace(/["]+/g, ""),
       },
     ]);
   };
