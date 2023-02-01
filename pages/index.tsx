@@ -25,10 +25,12 @@ export default function IndexPage({ apiKey }: { apiKey: string }) {
     e.preventDefault();
     if (loading) return;
 
-    setLoading(true);
     const request = (e.target as HTMLFormElement).request.value;
     (e.target as HTMLFormElement).request.value = "";
+    
+    if (!request) return;
 
+    setLoading(true);
     setLastMessage(request);
     // Set the request parameters
     console.log(request);
@@ -37,7 +39,7 @@ export default function IndexPage({ apiKey }: { apiKey: string }) {
       ({ request, response }, index) =>
         `{person: "${request}", chatbot: "${response.replace(/\n/g, " ")}"}`
     );
-    const prompt = `Previous conversation: "${previousMessages}" Current message: "${request}" Respond to the current message as the chatbot attempting to simulate a conversation between two secret gay lovers.`;
+    const prompt = `Previous conversation: "${previousMessages}" Current message: "${request}" Respond to the current message as the chatbot attempting to simulate a conversation between two secret gay lovers who are runners.`;
 
     console.log(previousMessages);
     console.log(prompt);
@@ -72,7 +74,10 @@ export default function IndexPage({ apiKey }: { apiKey: string }) {
     setLoading(false);
     setConversation([
       ...conversation,
-      { request, response: response.data.choices[0].text },
+      {
+        request,
+        response: response.data.choices[0].text.replace(/['"]+/g, ""),
+      },
     ]);
   };
   return (
